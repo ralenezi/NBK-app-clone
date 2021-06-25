@@ -1,9 +1,9 @@
 import { Box, Typography } from "@material-ui/core";
 import React from "react";
 
-import AddItemsForm from "./AddItemsForm";
+import AddItemForm from "./AddItemForm";
 
-const AddItems = () => {
+const AddItem = () => {
   return (
     <div>
       <Box m={4}>
@@ -11,9 +11,9 @@ const AddItems = () => {
           Add Item to wishlist
         </Typography>
       </Box>
-      <AddItemsForm />
+      <AddItemForm />
     </div>
   );
 };
 
-export default AddItems;
+export default AddItem;

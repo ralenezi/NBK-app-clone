@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddItemForm() {
+export default function AddItemForm({ wishlistId = 1 }) {
   const classes = useStyles();
 
   const [values, setValues] = React.useState({
@@ -32,7 +32,7 @@ export default function AddItemForm() {
   const [addItemToWishlist] = useMutation(ADD_ITEM_TO_WISHLIST);
 
   const addItemToWishlistAction = () => {
-    addItemToWishlist({ variables: { wishlistId: 2, ...values } });
+    addItemToWishlist({ variables: { wishlistId, ...values } });
   };
 
   const handleSubmit = (event) => {

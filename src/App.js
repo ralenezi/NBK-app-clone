@@ -1,19 +1,28 @@
-import React from 'react'
-import './App.css'
-import { ThemeProvider } from '@material-ui/core'
-import theme from './theme/index'
+import "./App.css";
 
+import { useQuery } from "@apollo/client";
+import { ThemeProvider } from "@material-ui/core";
+import React from "react";
+
+import { WISHLISTS } from "./graphql/queries";
 // Routes
-import Routes from './routes'
+import Routes from "./routes";
+import theme from "./theme/index";
 
 const App = () => {
+  const { loading, error, data } = useQuery(WISHLISTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :</p>;
+  console.log("🚀 ~ file: App.js ~ line 11 ~ App ~ data", data);
+
   return (
     <ThemeProvider theme={theme}>
-      <div className='wrapper'>
+      <div className="wrapper">
         <Routes />
       </div>
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -1,15 +1,22 @@
-import "./App.css";
-
-import { useQuery } from "@apollo/client";
-import { ThemeProvider } from "@material-ui/core";
 import React from "react";
 
-import BottomNav from "./components/common/BottomNav";
-import Navbar from "./components/common/Navbar";
+// Apollo
+import { useQuery } from "@apollo/client";
+
+// Queries
 import { WISHLISTS } from "./graphql/queries";
+
 // Routes
 import Routes from "./routes";
+
+// Components
+import Navbar from "./components/common/Navbar";
+import BottomNav from "./components/common/BottomNav";
+
+// Styles
+import "./App.css";
 import theme from "./theme/index";
+import { ThemeProvider } from "@material-ui/core";
 
 const App = () => {
   const { loading, error, data } = useQuery(WISHLISTS);

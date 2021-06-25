@@ -33,6 +33,12 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     textTransform: "none",
     backgroundColor: theme.palette.secondary.main,
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.main,
+    },
+    "&:focus": {
+      backgroundColor: theme.palette.secondary.main,
+    },
   },
 }));
 
@@ -40,19 +46,13 @@ const UpdateForm = ({ name, price, status, itemID }) => {
   const classes = useStyles();
   const history = useHistory();
 
-  const [
-    updateItemMutation,
-    { data: updateItemData, loading: updateItemLoading },
-  ] = useMutation(UPDATE_ITEM_MUTATION, {
+  const [updateItemMutation] = useMutation(UPDATE_ITEM_MUTATION, {
     onCompleted({ updateItemMutation }) {
       if (updateItemMutation.success) history.push("/");
     },
   });
 
-  const [
-    deleteItemMutation,
-    { data: deleteItemData, loading: deleteItemLoading },
-  ] = useMutation(DELETE_ITEM_MUTATION, {
+  const [deleteItemMutation] = useMutation(DELETE_ITEM_MUTATION, {
     onCompleted({ deleteItemMutation }) {
       if (deleteItemMutation.success) history.push("/");
     },
@@ -66,7 +66,6 @@ const UpdateForm = ({ name, price, status, itemID }) => {
   });
 
   const handleChange = (event) => {
-    console.log(values.status, !values.status);
     event.target.name === "status"
       ? setValues((values) => ({
           ...values,
@@ -83,9 +82,14 @@ const UpdateForm = ({ name, price, status, itemID }) => {
     updateItemMutation({ variables: { ...values } });
   };
 
-  const handleClick = (event) => {
+  const handleDelete = (event) => {
     event.preventDefault();
     deleteItemMutation({ variables: { itemId: itemID } });
+  };
+
+  const handleCancel = (event) => {
+    event.preventDefault();
+    history.push("/");
   };
 
   return (
@@ -153,7 +157,8 @@ const UpdateForm = ({ name, price, status, itemID }) => {
               <Button
                 variant="contained"
                 fullWidth
-                className={classes.cancelButton}>
+                className={classes.cancelButton}
+                onClick={handleCancel}>
                 Cancel
               </Button>
             </Grid>
@@ -168,7 +173,7 @@ const UpdateForm = ({ name, price, status, itemID }) => {
                 color="primary"
                 fullWidth
                 className={classes.deleteButton}
-                onClick={handleClick}>
+                onClick={handleDelete}>
                 Remove Item from Wishlist
               </Button>
             </Grid>

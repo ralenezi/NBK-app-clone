@@ -11,6 +11,9 @@ const baseOptions = {
 
 const themesOptions = {
   palette: {
+    common: {
+      gray: "#808080",
+    },
     type: "light",
     action: {
       active: colors.blueGrey[600],

@@ -1,41 +1,42 @@
-import _ from 'lodash'
-import { colors, createMuiTheme } from '@material-ui/core'
-import { softShadows } from './shadows'
-import typography from './typography'
+import { colors, createMuiTheme } from "@material-ui/core";
+import _ from "lodash";
+
+import { softShadows } from "./shadows";
+import typography from "./typography";
 
 const baseOptions = {
-  direction: 'ltr',
+  direction: "ltr",
   typography,
-}
+};
 
 const themesOptions = {
   palette: {
-    type: 'light',
+    type: "light",
     action: {
       active: colors.blueGrey[600],
     },
     background: {
       default: colors.common.white,
-      dark: '#f4f6f8',
+      dark: "#f4f6f8",
       paper: colors.common.white,
     },
     primary: {
       main: colors.indigo[600],
     },
     secondary: {
-      main: '#5850EC',
+      main: "#0E4C8C",
     },
     text: {
       primary: colors.blueGrey[900],
       secondary: colors.blueGrey[600],
     },
     link: {
-      visited: 'blue',
+      visited: "blue",
     },
   },
   shadows: softShadows,
-}
+};
 
-const theme = createMuiTheme(_.merge({}, baseOptions, themesOptions))
+const theme = createMuiTheme(_.merge({}, baseOptions, themesOptions));
 
-export default theme
+export default theme;

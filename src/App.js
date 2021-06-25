@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { ThemeProvider } from "@material-ui/core";
 import React from "react";
 
+import Navbar from "./components/common/Navbar";
 import { WISHLISTS } from "./graphql/queries";
 // Routes
 import Routes from "./routes";
@@ -19,6 +20,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="wrapper">
+        <Navbar />
         <Routes />
       </div>
     </ThemeProvider>

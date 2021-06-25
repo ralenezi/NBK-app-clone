@@ -13,7 +13,7 @@ const App = () => {
   const { loading, error, data } = useQuery(WISHLISTS);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :( {console.log(error)}</p>;
+  if (error) return <p>Error :{console.log(error)}</p>;
   console.log("🚀 ~ file: App.js ~ line 11 ~ App ~ data", data);
 
   return (

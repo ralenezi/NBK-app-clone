@@ -3,7 +3,7 @@ import React from "react";
 
 import AddItemForm from "./AddItemForm";
 
-const AddItem = () => {
+const AddItem = ({ wishlistId }) => {
   return (
     <div>
       <Box m={4}>
@@ -11,7 +11,7 @@ const AddItem = () => {
           Add Item to wishlist
         </Typography>
       </Box>
-      <AddItemForm />
+      <AddItemForm wishlistId={wishlistId} />
     </div>
   );
 };

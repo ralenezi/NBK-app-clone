@@ -67,7 +67,10 @@ const ListCard = ({
 
         <Button
           component={RouterLink}
-          to={`wishlist/${id}/settings/switch-account`}
+          to={{
+            pathname: `wishlist/${id}/settings/switch-account`,
+            state: { listType },
+          }}
           className={classes.button}
           variant="contained"
           color="peimary">

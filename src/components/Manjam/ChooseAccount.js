@@ -5,21 +5,14 @@ import { ACCOUNTS_QUERY } from "../../graphql/queries";
 import AccountCard from "../common/AccountCard";
 import Navbar from "../common/Navbar";
 
-const ChooseAccount = () => {
-  const { id } = useParams();
-  const values = {
-    id,
-    status: true,
-    visible: true,
-    deductionType: "FIXED",
-  };
+const ChooseAccount = (props) => {
+  const listType = props?.location?.state?.listType;
   const { loading, error, data } = useQuery(ACCOUNTS_QUERY);
-
   const { accounts } = data;
 
   return (
     <div>
-      <Navbar title={`choose list type wishlist account`} />
+      <Navbar title={`Choose ${listType ?? ""} Wishlist Account`} />
 
       {accounts.map(({ id, number, balance }) => (
         <AccountCard key={`${id}`} number={number} balance={balance} />

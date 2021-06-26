@@ -8,6 +8,7 @@ import { KeyboardArrowLeft } from "@material-ui/icons";
 import React from "react";
 import { useHistory, useParams } from "react-router";
 import { UPDATE_WISHLIST_MUTATION } from "../../graphql/mutations";
+import { WISHLISTS } from "../../graphql/queries";
 
 const useStyles = makeStyles({
   root: {
@@ -41,8 +42,13 @@ const AccountCard = ({ number, balance }) => {
 
   // doing mutations
   const [updateWishlist] = useMutation(UPDATE_WISHLIST_MUTATION, {
+    refetchQueries: [
+      {
+        query: WISHLISTS,
+      },
+    ],
     onCompleted({ updateWishlistMutation }) {
-      if (updateWishlistMutation.success) history.push("/");
+      if (updateWishlistMutation.success) history.push("/manjam");
     },
   });
 
@@ -53,7 +59,7 @@ const AccountCard = ({ number, balance }) => {
   return (
     <Card className={classes.root}>
       <Box display="flex" flexDirection="row-reverse" mt={1} mr={1}>
-        <KeyboardArrowLeft onClick={updateWishlistAction} />
+        {id && <KeyboardArrowLeft onClick={updateWishlistAction} />}
       </Box>
       <CardContent>
         <Typography variant="h5" color="textSecondary" gutterBottom>

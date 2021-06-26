@@ -20,6 +20,7 @@ const Manjam = () => {
       setWishlistsBalanceTotal(listsTotalSum);
     }
   }, []);
+
   const WISHLISTCARDS = data?.wishlists?.map((list) => {
     return (
       <ListCard

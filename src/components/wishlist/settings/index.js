@@ -1,21 +1,30 @@
 import React from "react";
-import { Box, Typography } from "@material-ui/core";
+import { useParams } from "react-router-dom";
+
+import { Box } from "@material-ui/core";
+
+// Apollo
+import { useQuery } from "@apollo/client";
+
+// Query
+import { WISHLIST_QUERY } from "../../../graphql/queries";
 
 // Components
 import Navbar from "../../common/Navbar";
+import SettingsForm from "./settingsForm";
 import CurrentAccountCard from "./currentAccountCard";
 
 const Settings = () => {
-  const wishlist = {
-    id: 1,
-    wishlistType: "SHORT",
-    account: {
-      number: "0000111122223333",
-    },
-  };
+  const { wishlistID } = useParams();
+
+  const { loading, data } = useQuery(WISHLIST_QUERY, {
+    variables: { wishlistId: wishlistID },
+  });
+
+  if (loading) return null;
 
   const title =
-    wishlist.wishlistType === "SHORT"
+    data.wishlist.wishlistType === "SHORT"
       ? "Short Term Wishlist Settings"
       : "Long Term Wishlist Settings";
   return (
@@ -23,9 +32,10 @@ const Settings = () => {
       <Navbar {...{ title }} />
       <Box m={4}>
         <CurrentAccountCard
-          wishlistID={wishlist.id}
-          number={wishlist.account.number}
+          {...{ wishlistID }}
+          number={data.wishlist.account.number}
         />
+        <SettingsForm wishlist={data.wishlist} />
       </Box>
     </>
   );

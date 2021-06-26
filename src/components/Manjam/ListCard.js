@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import { Info, MoreVert } from "@material-ui/icons";
-import { MoreVert, Info } from "@material-ui/icons";
 import {
   Box,
   Card,
@@ -41,16 +40,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ListCard = ({ wishlist: { wishlistType, total, balance }, value }) => {
+const ListCard = ({
+  wishlist: { wishlistType, total, balance, id },
+  value,
+}) => {
   const classes = useStyles();
   const history = useHistory();
 
-  let listType = "";
-  if (wishlistType === "SHORT") listType = "Short Term";
-  else listType = "Long Term";
+  const listType = wishlistType === "SHORT" ? "Short Term" : "Long Term";
 
   const handleClick = () => {
-    history.push("/wishlist/1/settings/");
+    history.push(`/wishlist/${id}/settings/`);
   };
 
   return listType && value ? (

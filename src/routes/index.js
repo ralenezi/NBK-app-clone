@@ -18,7 +18,7 @@ const Routes = () => {
       <Route exact component={Home} path="/nearby" />
       <Route exact component={AddItems} path="/add-item" />
       <Route component={ItemUpdate} path="/items/:itemID/update/" />
-      <Route component={Settings} path="/wishlist/:wishListID/settings/" />
+      <Route component={Settings} path="/wishlist/:wishlistID/settings/" />
     </Switch>
   );
 };

@@ -58,3 +58,20 @@ export const ITEM_QUERY = gql`
     }
   }
 `;
+
+export const ITEM_LIST_QUERY = gql`
+  query itemsListQuery($wishlistId: ID!) {
+    items(wishlistId: $wishlistId) {
+      name
+      price
+      status
+      wishlist {
+        user {
+          fullName
+        }
+        balance
+        total
+      }
+    }
+  }
+`;

@@ -1,12 +1,11 @@
-import React from "react";
+import { AppBar, IconButton, makeStyles, Toolbar } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
-import { AppBar, IconButton, Toolbar, makeStyles } from "@material-ui/core";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     minHeight: "100%",
-    paddingBottom: theme.spacing(3),
   },
   menuButton: {
     marginRight: theme.spacing(2),

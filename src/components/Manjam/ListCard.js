@@ -50,7 +50,11 @@ const ListCard = ({
   };
 
   return status ? (
-    <Card className={classes.root}>
+    <Card
+      className={classes.root}
+      onClick={() => {
+        history.push(`/manjam/${id}`);
+      }}>
       <Box display="flex" flexDirection="row-reverse" mt={2}>
         <IconButton color="primary" onClick={handleClick}>
           <MoreVert />

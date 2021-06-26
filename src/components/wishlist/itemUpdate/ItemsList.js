@@ -1,9 +1,28 @@
-import { Box, Card, Grid, makeStyles } from "@material-ui/core";
+import { useQuery } from "@apollo/client";
+import { Box, Grid, makeStyles } from "@material-ui/core";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 import React from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { ITEM_LIST_QUERY } from "../../../graphql/queries";
 import Navbar from "../../common/Navbar";
 import CustomizedProgressBars from "../../Manjam/Progress";
 import ItemCard from "../ItemCard";
-
+const useStylesAgain = makeStyles((theme) => ({
+  fab: {
+    position: "absolute",
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+  },
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
+}));
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "90%",
@@ -30,28 +49,48 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
   },
 }));
-const ItemsList = () => {
+const ItemsList = ({ balance = 0, total = 0 }) => {
   const classes = useStyles();
-  console.log("HHHHHHHHHHHHHHHHHHHHHH");
+  const classesAgain = useStylesAgain();
+  const { manjamID } = useParams();
+  const history = useHistory();
+  const { loading, error, data } = useQuery(ITEM_LIST_QUERY, {
+    variables: { wishlistId: manjamID },
+  });
+  const itemsCardsObj = data?.items.map((item) => {
+    return <ItemCard {...item} />;
+  });
   return (
     <>
-      <Navbar title="Someone's Manjam" />
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        style={{ backgroundColor: "#EAEAEA", height: "100vh" }}>
-        <CustomizedProgressBars value={15} />
-        <Card className={classes.root}>
-          <Grid container alignItems="center" justify="center">
-            <Box>
-              <h3 className={classes.heading}> wishlist Items</h3>
-            </Box>
-            <ItemCard />
-            fasjglfsnka;jml
-          </Grid>
-        </Card>
-      </Grid>
+      <Fab
+        color="primary"
+        className={classesAgain.fab}
+        aria-label="add"
+        onClick={() => {
+          history.push(`/add-item/${manjamID}`);
+        }}>
+        <AddIcon />
+      </Fab>
+      <Navbar title={`${data?.items[0].wishlist.user.fullName}'s Manjam`} />
+
+      <Box style={{ backgroundColor: "#EAEAEA" }} px={2}>
+        <h4>
+          {data?.items[0].wishlist.balance || 0} KD out of{" "}
+          {data?.items[0].wishlist.total || 0} KD
+        </h4>
+        <CustomizedProgressBars
+          styleObj={{ border: "2px solid black", borderRadius: 5 }}
+          value={15}
+        />
+        <Grid
+          container
+          direction="row"
+          alignItems="center"
+          justify="center"
+          style={{ backgroundColor: "#EAEAEA", height: "100vh" }}>
+          {itemsCardsObj}
+        </Grid>
+      </Box>
     </>
   );
 };

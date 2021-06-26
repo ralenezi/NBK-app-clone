@@ -1,13 +1,14 @@
-import { Box, Card, Grid, makeStyles } from "@material-ui/core";
+import { Box, Button, Card, Grid, makeStyles } from "@material-ui/core";
+import { MoreVert } from "@material-ui/icons";
 import React from "react";
-import CustomizedProgressBars from "../Manjam/Progress";
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "90%",
-    height: "220px",
+    width: "100%",
+    height: "160px",
     border: "1px solid black",
     marginBottom: "22px",
     borderRadius: "12px",
+    marginTop: "22px",
   },
   heading: {
     paddingTop: "15px",
@@ -27,18 +28,36 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
   },
 }));
-const ItemCard = ({ name }) => {
+const ItemCard = ({ name, price, status }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <Grid container alignItems="center" justify="center">
-        <Box>
-          <h3 className={classes.heading}> wishlist Items</h3>
+    <Grid item lg={12} sm={12} xs={12} lg={12}>
+      <Card className={classes.root}>
+        <Box display="flex" flexDirection="row-reverse" mt={2}>
+          <MoreVert />
         </Box>
-        <CustomizedProgressBars value={10} />
-      </Grid>
-    </Card>
+        <Grid container alignItems="center" justify="center">
+          <Box>
+            <div
+              className={classes.progressContent2}
+              style={{ fontWeight: "bold" }}>
+              {name}
+            </div>
+          </Box>
+        </Grid>
+        <Grid container alignItems="center" justify="center">
+          <Box mt={2}>
+            <div>{price}</div>
+          </Box>
+        </Grid>
+        <Box display="flex" flexDirection="row-reverse" mt={2} mr={4}>
+          <Button variant="contained" color="primary" disabled={!status}>
+            Redeem
+          </Button>
+        </Box>
+      </Card>
+    </Grid>
   );
 };
 

@@ -24,11 +24,11 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CustomizedProgressBars({ value }) {
+export default function CustomizedProgressBars({ value, styleObj }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={styleObj}>
       <BorderLinearProgress variant="determinate" value={value} />
     </div>
   );

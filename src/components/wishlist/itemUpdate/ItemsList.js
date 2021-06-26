@@ -74,14 +74,23 @@ const ItemsList = ({ balance = 0, total = 0 }) => {
       <Navbar title={`${data?.items[0].wishlist.user.fullName}'s Manjam`} />
 
       <Box style={{ backgroundColor: "#EAEAEA" }} px={2}>
-        <h4>
-          {data?.items[0].wishlist.balance || 0} KD out of{" "}
-          {data?.items[0].wishlist.total || 0} KD
-        </h4>
-        <CustomizedProgressBars
-          styleObj={{ border: "2px solid black", borderRadius: 5 }}
-          value={15}
-        />
+        <Grid container alignItems="center" justify="center">
+          <h4>
+            {data?.items[0].wishlist.balance || 0} KD out of{" "}
+            {data?.items[0].wishlist.total || 0} KD
+          </h4>
+          <CustomizedProgressBars
+            styleObj={{ border: "2px solid black", borderRadius: 5 }}
+            value={
+              data?.items[0].wishlist.balance < data?.items[0].wishlist.total
+                ? (data?.items[0].wishlist.balance /
+                    data?.items[0].wishlist.total) *
+                  100
+                : 100
+            }
+          />
+        </Grid>
+
         <Grid
           container
           direction="row"

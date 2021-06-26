@@ -9,6 +9,7 @@ import {
 import { Info, MoreVert } from "@material-ui/icons";
 import React from "react";
 import { Link as RouterLink, useHistory } from "react-router-dom";
+import CustomizedProgressBars from "./Progress";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,6 +65,8 @@ const ListCard = ({
         <Box>
           <h3 className={classes.heading}>{listType} wishlist</h3>
         </Box>
+        <CustomizedProgressBars value={value} />
+
         <h4 className={classes.progressContent}>Progress &nbsp;</h4>
         <h4 className={classes.progressContent2}>
           {balance} KD out of {total} KD

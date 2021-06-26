@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddItemForm({ wishlistId = 1 }) {
+export default function AddItemForm({ wishlistId = 3 }) {
   const classes = useStyles();
   const history = useHistory();
 

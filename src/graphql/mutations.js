@@ -34,3 +34,29 @@ export const DELETE_ITEM_MUTATION = gql`
     }
   }
 `;
+
+export const UPDATE_WISHLIST_MUTATION = gql`
+  mutation updateWishlistMutation(
+    $accountNumber: String!
+    $balance: Float!
+    $balanceLimit: Float!
+    $deductionAmount: Float!
+    $deductionType: String!
+    $status: Boolean!
+    $visible: Boolean!
+    $wishlistId: ID!
+  ) {
+    updateWishlistMutation(
+      accountNumber: $accountNumber
+      balance: $balance
+      balanceLimit: $balanceLimit
+      deductionAmount: $deductionAmount
+      deductionType: $deductionType
+      status: $status
+      visible: $visible
+      wishlistId: $wishlistId
+    ) {
+      success
+    }
+  }
+`;

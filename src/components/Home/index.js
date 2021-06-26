@@ -9,8 +9,9 @@ const Home = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :{console.log(error)}</p>;
+  console.log(data);
   const accountCards = data.accounts.map(({ id, number, balance }) => (
-    <AccountCard key={`${id}`} number={number} balance={balance} />
+    <AccountCard key={id} number={number} balance={balance} />
   ));
 
   return (

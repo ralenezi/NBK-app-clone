@@ -8,6 +8,7 @@ export const WISHLISTS = gql`
         number
         balance
       }
+      id
       status
       wishlistType
     }

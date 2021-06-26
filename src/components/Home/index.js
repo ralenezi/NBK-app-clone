@@ -1,6 +1,7 @@
 import React from "react";
 
 import AccountCard from "../common/AccountCard";
+import Navbar from "../common/Navbar";
 
 const accounts = [
   { id: 1, number: "9748744785475567", balance: 5487002 },
@@ -12,7 +13,12 @@ const index = () => {
     <AccountCard key={`${id}`} number={number} balance={balance} />
   ));
 
-  return <div>{accountCards}</div>;
+  return (
+    <>
+      <Navbar />
+      <div>{accountCards}</div>
+    </>
+  );
 };
 
 export default index;

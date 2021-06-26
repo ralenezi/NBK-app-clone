@@ -1,4 +1,10 @@
-import { AppBar, IconButton, Toolbar, makeStyles } from "@material-ui/core";
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 import React from "react";
 
@@ -14,12 +20,15 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  nav: {
+    backgroundColor: theme.palette.primary,
+  },
 }));
-const Navbar = () => {
+const Navbar = ({ title }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.nav}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -28,6 +37,7 @@ const Navbar = () => {
             aria-label="menu">
             <Menu />
           </IconButton>
+          {title ?? " "}
         </Toolbar>
       </AppBar>
     </div>

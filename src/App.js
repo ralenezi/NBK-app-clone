@@ -5,9 +5,11 @@ import React from "react";
 // Styles
 import "./App.css";
 import BottomNav from "./components/common/BottomNav";
+
 // Components
 import Navbar from "./components/common/Navbar";
 // Queries
+
 import { WISHLISTS } from "./graphql/queries";
 // Routes
 import Routes from "./routes";
@@ -23,7 +25,6 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="wrapper">
-        <Navbar />
         <Routes />
         <BottomNav />
       </div>

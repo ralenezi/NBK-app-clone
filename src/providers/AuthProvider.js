@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
             }
           }
         `;
-        const { data, loading, error } = await client.mutate({
+        const { data } = await client.mutate({
           mutation: LOGIN,
         });
         localStorage.setItem("token", data.tokenAuth.token);

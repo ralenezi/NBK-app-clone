@@ -1,13 +1,24 @@
-import { Box, Button, Card, Grid, makeStyles } from "@material-ui/core";
-import { Info, MoreVert } from "@material-ui/icons";
 import React from "react";
+import { useHistory } from "react-router-dom";
+
+import { Info, MoreVert } from "@material-ui/icons";
+import {
+  Box,
+  Card,
+  makeStyles,
+  Grid,
+  Button,
+  IconButton,
+} from "@material-ui/core";
+
+// Components
 import CustomizedProgressBars from "./Progress";
 import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "90%",
-    height: "220px",
+    height: "230px",
     border: "1px solid black",
     marginBottom: "22px",
     borderRadius: "12px",
@@ -35,13 +46,20 @@ const ListCard = ({
   value,
 }) => {
   const classes = useStyles();
-  let listType = "";
-  if (wishlistType === "SHORT") listType = "Short Term";
-  else listType = "Long Term";
+  const history = useHistory();
+
+  const listType = wishlistType === "SHORT" ? "Short Term" : "Long Term";
+
+  const handleClick = () => {
+    history.push(`/wishlist/${id}/settings/`);
+  };
+
   return status ? (
     <Card className={classes.root}>
       <Box display="flex" flexDirection="row-reverse" mt={2}>
-        <MoreVert />
+        <IconButton color="primary" onClick={handleClick}>
+          <MoreVert />
+        </IconButton>
       </Box>
       <Grid container alignItems="center" justify="center">
         <Box>

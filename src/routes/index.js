@@ -6,6 +6,7 @@ import Home from "../components/Home/";
 import Manjam from "../components/Manjam/";
 import AddItems from "../components/AddItems";
 import ChooseAccount from "../components/Manjam/ChooseAccount";
+import Settings from "../components/wishlist/settings";
 import ItemUpdate from "../components/wishlist/itemUpdate";
 
 const Routes = () => {
@@ -22,6 +23,7 @@ const Routes = () => {
         component={ChooseAccount}
         path="/wishlist/:id/settings/switch-account"
       />
+      <Route component={Settings} path="/wishlist/:wishlistID/settings/" />
     </Switch>
   );
 };

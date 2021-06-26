@@ -17,6 +17,24 @@ export const WISHLISTS = gql`
   }
 `;
 
+export const WISHLIST_QUERY = gql`
+  query wishlist($wishlistId: ID!) {
+    wishlist(wishlistId: $wishlistId) {
+      account {
+        number
+      }
+      id
+      wishlistType
+      balance
+      balanceLimit
+      deductionType
+      deductionAmount
+      status
+      visible
+    }
+  }
+`;
+
 export const ACCOUNTS_QUERY = gql`
   query accounts {
     accounts {
@@ -29,6 +47,7 @@ export const ACCOUNTS_QUERY = gql`
     }
   }
 `;
+
 export const ITEM_QUERY = gql`
   query itemQuery($itemId: ID!) {
     item(itemId: $itemId) {

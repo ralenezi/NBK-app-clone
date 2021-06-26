@@ -1,12 +1,6 @@
-import {
-  AppBar,
-  IconButton,
-  Toolbar,
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
-import { Menu } from "@material-ui/icons";
 import React from "react";
+import { Menu } from "@material-ui/icons";
+import { AppBar, IconButton, Toolbar, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {

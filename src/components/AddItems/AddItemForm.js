@@ -3,6 +3,7 @@ import { Box, Button, Grid, InputAdornment } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import { ADD_ITEM_TO_WISHLIST } from "../../graphql/mutations";
 
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddItemForm({ wishlistId = 1 }) {
   const classes = useStyles();
+  const history = useHistory();
 
   const [values, setValues] = React.useState({
     name: "",
@@ -29,7 +31,11 @@ export default function AddItemForm({ wishlistId = 1 }) {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  const [addItemToWishlist] = useMutation(ADD_ITEM_TO_WISHLIST);
+  const [addItemToWishlist] = useMutation(ADD_ITEM_TO_WISHLIST, {
+    onCompleted({ addItemMutation }) {
+      if (addItemMutation.success) history.push("/");
+    },
+  });
 
   const addItemToWishlistAction = () => {
     addItemToWishlist({ variables: { wishlistId, ...values } });
@@ -38,6 +44,11 @@ export default function AddItemForm({ wishlistId = 1 }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     addItemToWishlistAction();
+  };
+
+  const handleCancel = (event) => {
+    event.preventDefault();
+    history.push("/");
   };
 
   return (
@@ -85,7 +96,8 @@ export default function AddItemForm({ wishlistId = 1 }) {
               <Button
                 variant="contained"
                 fullWidth
-                className={classes.cancelButton}>
+                className={classes.cancelButton}
+                onClick={handleCancel}>
                 Cancel
               </Button>
             </Grid>

@@ -9,7 +9,9 @@ export const WISHLISTS = gql`
         balance
       }
       status
+      total
       wishlistType
+      balance
     }
   }
 `;

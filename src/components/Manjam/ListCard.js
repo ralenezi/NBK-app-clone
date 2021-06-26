@@ -1,19 +1,6 @@
+import { Box, Button, Card, Grid, makeStyles } from "@material-ui/core";
+import { Info, MoreVert } from "@material-ui/icons";
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import {
-  Box,
-  Card,
-  CardMedia,
-  Link,
-  Typography,
-  colors,
-  makeStyles,
-  Grid,
-  LinearProgress,
-  Container,
-  Button,
-} from "@material-ui/core";
-import { MoreVert, Info } from "@material-ui/icons";
 import CustomizedProgressBars from "./Progress";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,9 +30,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ListCard = ({ listType, value }) => {
+const ListCard = ({ wishlist: { wishlistType, total, balance }, value }) => {
   const classes = useStyles();
-
+  let listType = "";
+  if (wishlistType === "SHORT") listType = "Short Term";
+  else listType = "Long Term";
   return listType && value ? (
     <Card className={classes.root}>
       <Box display="flex" flexDirection="row-reverse" mt={2}>
@@ -58,7 +47,9 @@ const ListCard = ({ listType, value }) => {
         <CustomizedProgressBars value={value} />
 
         <h4 className={classes.progressContent}>Progress &nbsp;</h4>
-        <h4 className={classes.progressContent2}>1 KD out of 4000 KD</h4>
+        <h4 className={classes.progressContent2}>
+          {balance} KD out of {total} KD
+        </h4>
       </Grid>
     </Card>
   ) : (

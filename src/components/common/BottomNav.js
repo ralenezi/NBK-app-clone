@@ -25,10 +25,6 @@ export default function BottomNav({ wishlists }) {
       value={value}
       onChange={(event, newValue) => {
         setValue(newValue);
-        console.log(
-          "🚀 ~ file: BottomNav.js ~ line 27 ~ BottomNav ~ value",
-          value
-        );
       }}
       showLabels
       className={classes.root}>

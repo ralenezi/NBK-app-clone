@@ -13,6 +13,7 @@ import {
 
 // Components
 import CustomizedProgressBars from "./Progress";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ListCard = ({
-  wishlist: { wishlistType, total, balance, id },
+  wishlist: { id, wishlistType, total, balance, status },
   value,
 }) => {
   const classes = useStyles();
@@ -53,7 +54,7 @@ const ListCard = ({
     history.push(`/wishlist/${id}/settings/`);
   };
 
-  return listType && value ? (
+  return status ? (
     <Card className={classes.root}>
       <Box display="flex" flexDirection="row-reverse" mt={2}>
         <IconButton color="primary" onClick={handleClick}>
@@ -82,7 +83,15 @@ const ListCard = ({
           <h3 className={classes.heading}>{listType} wishlist</h3>
         </Box>
 
-        <Button className={classes.button} variant="contained" color="primary">
+        <Button
+          component={RouterLink}
+          to={{
+            pathname: `wishlist/${id}/settings/switch-account`,
+            state: { listType },
+          }}
+          className={classes.button}
+          variant="contained"
+          color="peimary">
           Choose Account
         </Button>
       </Box>

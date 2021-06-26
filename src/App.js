@@ -22,7 +22,6 @@ const App = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :{console.log(error)}</p>;
-  console.log("🚀 ~ file: App.js ~ line 11 ~ App ~ data", data);
 
   return (
     <ThemeProvider theme={theme}>

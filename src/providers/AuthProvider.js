@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
       if (!userToken) {
         const LOGIN = gql`
           mutation TokenAuth {
-            tokenAuth(cid: "123456789123", password: "pass") {
+            tokenAuth(cid: "234567891234", password: "pass") {
               token
             }
           }

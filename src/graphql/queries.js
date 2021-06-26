@@ -41,6 +41,9 @@ export const ACCOUNTS_QUERY = gql`
       id
       number
       balance
+      user {
+        fullName
+      }
     }
   }
 `;

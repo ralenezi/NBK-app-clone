@@ -1,3 +1,4 @@
+import { useMutation } from "@apollo/client";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -6,7 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import { KeyboardArrowLeft } from "@material-ui/icons";
 import React from "react";
 import { useHistory, useParams } from "react-router";
-import { useMutation } from "@apollo/client";
 import { UPDATE_WISHLIST_MUTATION } from "../../graphql/mutations";
 
 const useStyles = makeStyles({
@@ -36,7 +36,7 @@ const AccountCard = ({ number, balance }) => {
     deductionType: "FIXED",
     balanceLimit: balance,
     accontNumber: number,
-    balance,
+    balance: balance,
   };
 
   // doing mutations
@@ -47,7 +47,7 @@ const AccountCard = ({ number, balance }) => {
   });
 
   const updateWishlistAction = () => {
-    updateWishlist({ ...values });
+    updateWishlist({ variables: { ...values } });
   };
 
   return (

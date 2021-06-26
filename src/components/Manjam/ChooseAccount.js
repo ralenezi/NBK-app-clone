@@ -1,22 +1,21 @@
+import { useQuery } from "@apollo/client";
 import React from "react";
 import { useParams } from "react-router";
+import { ACCOUNTS_QUERY } from "../../graphql/queries";
 import AccountCard from "../common/AccountCard";
 import Navbar from "../common/Navbar";
 
-// ! I axpect to get the whole manjam based on the id in the params
-// then fetch that manjam or get it from the state
-
-const accounts = [
-  { id: 1, number: "9748744785475567", balance: 5487002 },
-  { id: 2, number: "9745785785475567", balance: 5666667002 },
-];
-
 const ChooseAccount = () => {
   const { id } = useParams();
-  console.log(
-    "🚀 ~ file: ChooseAccount.js ~ line 18 ~ ChooseAccount ~ manjamType",
-    id
-  );
+  const values = {
+    id,
+    status: true,
+    visible: true,
+    deductionType: "FIXED",
+  };
+  const { loading, error, data } = useQuery(ACCOUNTS_QUERY);
+
+  const { accounts } = data;
 
   return (
     <div>

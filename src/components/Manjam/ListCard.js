@@ -2,7 +2,7 @@ import { Box, Button, Card, Grid, makeStyles } from "@material-ui/core";
 import { Info, MoreVert } from "@material-ui/icons";
 import React from "react";
 import CustomizedProgressBars from "./Progress";
-import ChooseAccount from "./ChooseAccount";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
   progressContent: {
     display: "inline",
-    // marginRight
   },
   progressContent2: {
     display: "inline",
@@ -31,12 +30,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ListCard = ({ wishlist: { wishlistType, total, balance }, value }) => {
+const ListCard = ({
+  wishlist: { id, wishlistType, total, balance, status },
+  value,
+}) => {
   const classes = useStyles();
   let listType = "";
   if (wishlistType === "SHORT") listType = "Short Term";
   else listType = "Long Term";
-  return listType && value ? (
+  return status ? (
     <Card className={classes.root}>
       <Box display="flex" flexDirection="row-reverse" mt={2}>
         <MoreVert />
@@ -65,7 +67,7 @@ const ListCard = ({ wishlist: { wishlistType, total, balance }, value }) => {
 
         <Button
           component={RouterLink}
-          to={`wishlist/${1}/settings/switch-account`}
+          to={`wishlist/${id}/settings/switch-account`}
           className={classes.button}
           variant="contained"
           color="peimary">

@@ -1,13 +1,15 @@
 import { useQuery } from "@apollo/client";
 import { Grid } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { WISHLISTS } from "../../graphql/queries";
+import { WISHLISTS, ACCOUNTS_QUERY } from "../../graphql/queries";
 import Navbar from "../common/Navbar";
 import ListCard from "./ListCard";
 
 const Manjam = () => {
   const [wishlistsBalanceTotal, setWishlistsBalanceTotal] = useState(0);
   const { loading, error, data } = useQuery(WISHLISTS);
+  const accData = useQuery(ACCOUNTS_QUERY);
+  const userName = accData.data.accounts[0].user.fullName;
 
   useEffect(() => {
     if (data) {
@@ -31,7 +33,7 @@ const Manjam = () => {
   });
   return (
     <>
-      <Navbar title="Someone's Manjam" />
+      <Navbar title={`${userName.split(" ")[0]}'s Manjam`} />
       <Grid
         container
         direction="column"

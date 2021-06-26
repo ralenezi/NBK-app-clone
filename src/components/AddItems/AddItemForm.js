@@ -4,8 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import React from "react";
 import { useHistory } from "react-router-dom";
-
 import { ADD_ITEM_TO_WISHLIST } from "../../graphql/mutations";
+import { ITEM_LIST_QUERY } from "../../graphql/queries";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddItemForm({ wishlistId = 3 }) {
+export default function AddItemForm({ wishlistId }) {
   const classes = useStyles();
   const history = useHistory();
 
@@ -32,8 +32,16 @@ export default function AddItemForm({ wishlistId = 3 }) {
   };
 
   const [addItemToWishlist] = useMutation(ADD_ITEM_TO_WISHLIST, {
+    refetchQueries: [
+      {
+        query: ITEM_LIST_QUERY,
+        variables: { wishlistId: wishlistId },
+      },
+    ],
     onCompleted({ addItemMutation }) {
-      if (addItemMutation.success) history.push("/");
+      if (addItemMutation.success) {
+        history.push(`/manjam/${wishlistId}/`);
+      }
     },
   });
 

@@ -1,19 +1,15 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-
-import { Info, MoreVert } from "@material-ui/icons";
 import {
   Box,
-  Card,
-  makeStyles,
-  Grid,
   Button,
+  Card,
+  Grid,
   IconButton,
+  makeStyles,
 } from "@material-ui/core";
-
-// Components
+import { Info, MoreVert } from "@material-ui/icons";
+import React from "react";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 import CustomizedProgressBars from "./Progress";
-import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +51,11 @@ const ListCard = ({
   };
 
   return status ? (
-    <Card className={classes.root}>
+    <Card
+      className={classes.root}
+      onClick={() => {
+        history.push(`/manjam/${id}`);
+      }}>
       <Box display="flex" flexDirection="row-reverse" mt={2}>
         <IconButton color="primary" onClick={handleClick}>
           <MoreVert />

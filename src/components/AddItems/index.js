@@ -1,9 +1,10 @@
 import { Box, Typography } from "@material-ui/core";
 import React from "react";
-
+import { useParams } from "react-router";
 import AddItemForm from "./AddItemForm";
 
-const AddItem = ({ wishlistId }) => {
+const AddItem = () => {
+  const { wishlistId } = useParams();
   return (
     <div>
       <Box m={4}>

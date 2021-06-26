@@ -1,6 +1,6 @@
-import React from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import React from "react";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -24,11 +24,11 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CustomizedProgressBars({ value }) {
+export default function CustomizedProgressBars({ value, styleObj }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={styleObj}>
       <BorderLinearProgress variant="determinate" value={value} />
     </div>
   );

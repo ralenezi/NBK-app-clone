@@ -1,22 +1,24 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-
+import AddItems from "../components/AddItems";
 // Components
 import Home from "../components/Home/";
 import Manjam from "../components/Manjam/";
-import AddItems from "../components/AddItems";
 import ChooseAccount from "../components/Manjam/ChooseAccount";
-import Settings from "../components/wishlist/settings";
 import ItemUpdate from "../components/wishlist/itemUpdate";
+import ItemsList from "../components/wishlist/itemUpdate/ItemsList";
+import Settings from "../components/wishlist/settings";
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact component={Home} path="/" />
+
+      <Route component={ItemsList} path="/manjam/:manjamID/" />
       <Route exact component={Manjam} path="/manjam" />
       <Route exact component={Home} path="/favorites" />
       <Route exact component={Home} path="/nearby" />
-      <Route exact component={AddItems} path="/add-item" />
+      <Route exact component={AddItems} path="/add-item/:wishlistId" />
       <Route component={ItemUpdate} path="/items/:itemID/update/" />
       <Route
         exact

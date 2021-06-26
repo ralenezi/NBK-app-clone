@@ -4,6 +4,7 @@ import { gql } from "@apollo/client";
 export const WISHLISTS = gql`
   query wishlists {
     wishlists {
+      id
       account {
         number
         balance
@@ -54,6 +55,24 @@ export const ITEM_QUERY = gql`
       name
       price
       status
+    }
+  }
+`;
+
+export const ITEM_LIST_QUERY = gql`
+  query itemsListQuery($wishlistId: ID!) {
+    items(wishlistId: $wishlistId) {
+      id
+      name
+      price
+      status
+      wishlist {
+        user {
+          fullName
+        }
+        balance
+        total
+      }
     }
   }
 `;

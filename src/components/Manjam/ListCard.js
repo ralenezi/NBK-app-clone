@@ -2,6 +2,7 @@ import { Box, Button, Card, Grid, makeStyles } from "@material-ui/core";
 import { Info, MoreVert } from "@material-ui/icons";
 import React from "react";
 import CustomizedProgressBars from "./Progress";
+import ChooseAccount from "./ChooseAccount";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +63,12 @@ const ListCard = ({ wishlist: { wishlistType, total, balance }, value }) => {
           <h3 className={classes.heading}>{listType} wishlist</h3>
         </Box>
 
-        <Button className={classes.button} variant="contained" color="peimary">
+        <Button
+          component={RouterLink}
+          to={`wishlist/${1}/settings/switch-account`}
+          className={classes.button}
+          variant="contained"
+          color="peimary">
           Choose Account
         </Button>
       </Box>

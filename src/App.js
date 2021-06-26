@@ -5,18 +5,13 @@ import React from "react";
 // Styles
 import "./App.css";
 import BottomNav from "./components/common/BottomNav";
-
-// Components
-import Navbar from "./components/common/Navbar";
-// Queries
-
-import { WISHLISTS } from "./graphql/queries";
+import { ACCOUNTS_QUERY } from "./graphql/queries";
 // Routes
 import Routes from "./routes";
 import theme from "./theme/index";
 
 const App = () => {
-  const { loading, error, data } = useQuery(WISHLISTS);
+  const { loading, error, data } = useQuery(ACCOUNTS_QUERY);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :{console.log(error)}</p>;

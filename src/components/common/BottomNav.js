@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function BottomNav() {
+export default function BottomNav({ wishlists }) {
   const classes = useStyles();
   const [value, setValue] = React.useState("Home");
 

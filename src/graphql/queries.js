@@ -14,6 +14,15 @@ export const WISHLISTS = gql`
   }
 `;
 
+export const ACCOUNTS_QUERY = gql`
+  query accounts {
+    accounts {
+      id
+      number
+      balance
+    }
+  }
+`;
 export const ITEM_QUERY = gql`
   query itemQuery($itemId: ID!) {
     item(itemId: $itemId) {

@@ -26,8 +26,9 @@ const AccountCard = ({ number, balance }) => {
     status: true,
     visible: true,
     deductionType: "FIXED",
+    deductionAmount: 0,
     balanceLimit: balance,
-    accontNumber: number,
+    accountNumber: number,
     balance: balance,
   };
 

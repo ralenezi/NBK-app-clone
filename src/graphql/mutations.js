@@ -9,30 +9,6 @@ export const ADD_ITEM_TO_WISHLIST = gql`
   }
 `;
 
-export const UPDATE_WISHLIST_MUTATION = gql`
-  mutation updateItem(
-    $wishlistId: ID!
-    $balanceLimit: Float!
-    $accontNumber: String!
-    $balance: Float!
-    $status: Boolean!
-    $visible: Boolean!
-    $deductionType: String!
-  ) {
-    updateWishlistMutation(
-      wishlistId: $wishlistId
-      balanceLimit: $balanceLimit
-      accontNumber: $accontNumber
-      balance: $balance
-      status: $status
-      visible: $visible
-      deductionType: $deductionType
-    ) {
-      success
-    }
-  }
-`;
-
 export const UPDATE_ITEM_MUTATION = gql`
   mutation updateItem(
     $itemId: ID!

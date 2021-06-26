@@ -3,11 +3,9 @@ import { Route, Switch } from "react-router";
 
 // Components
 import Home from "../components/Home/";
-
 import Manjam from "../components/Manjam/";
-
+import Settings from "../components/wishlist/settings";
 import AddItems from "../components/AddItems";
-
 import ItemUpdate from "../components/wishlist/itemUpdate";
 
 const Routes = () => {
@@ -20,6 +18,7 @@ const Routes = () => {
       <Route exact component={Home} path="/nearby" />
       <Route exact component={AddItems} path="/add-item" />
       <Route component={ItemUpdate} path="/items/:itemID/update/" />
+      <Route component={Settings} path="/wishlist/:wishListID/settings/" />
     </Switch>
   );
 };

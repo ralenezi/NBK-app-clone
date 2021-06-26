@@ -1,14 +1,21 @@
+import React from "react";
+
 // Apollo
 import { useQuery } from "@apollo/client";
-import { ThemeProvider } from "@material-ui/core";
-import React from "react";
+
 // Styles
 import "./App.css";
+import theme from "./theme/index";
+import { ThemeProvider } from "@material-ui/core";
+
+// Components
 import BottomNav from "./components/common/BottomNav";
-import { ACCOUNTS_QUERY } from "./graphql/queries";
+
+// Queries
+import { WISHLISTS, ACCOUNTS_QUERY } from "./graphql/queries";
+
 // Routes
 import Routes from "./routes";
-import theme from "./theme/index";
 
 const App = () => {
   const { loading, error, data } = useQuery(ACCOUNTS_QUERY);

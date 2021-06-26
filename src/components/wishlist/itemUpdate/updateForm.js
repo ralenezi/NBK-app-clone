@@ -1,23 +1,21 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  InputAdornment,
-  FormControlLabel,
-  Checkbox,
-  Box,
-  Grid,
-  TextField,
-  Button,
-} from "@material-ui/core";
-
 // Apollo
 import { useMutation } from "@apollo/client";
-
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  InputAdornment,
+  TextField,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
+import { useHistory } from "react-router-dom";
 // Mutations
 import {
-  UPDATE_ITEM_MUTATION,
   DELETE_ITEM_MUTATION,
+  UPDATE_ITEM_MUTATION,
 } from "../../../graphql/mutations";
 
 const useStyles = makeStyles((theme) => ({
@@ -48,13 +46,13 @@ const UpdateForm = ({ name, price, status, itemID }) => {
 
   const [updateItemMutation] = useMutation(UPDATE_ITEM_MUTATION, {
     onCompleted({ updateItemMutation }) {
-      if (updateItemMutation.success) history.push("/");
+      if (updateItemMutation.success) history.push("/manjam");
     },
   });
 
   const [deleteItemMutation] = useMutation(DELETE_ITEM_MUTATION, {
     onCompleted({ deleteItemMutation }) {
-      if (deleteItemMutation.success) history.push("/");
+      if (deleteItemMutation.success) history.push("/manjam");
     },
   });
 

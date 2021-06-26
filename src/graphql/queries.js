@@ -62,6 +62,7 @@ export const ITEM_QUERY = gql`
 export const ITEM_LIST_QUERY = gql`
   query itemsListQuery($wishlistId: ID!) {
     items(wishlistId: $wishlistId) {
+      id
       name
       price
       status

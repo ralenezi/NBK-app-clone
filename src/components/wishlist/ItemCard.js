@@ -1,6 +1,7 @@
 import { Box, Button, Card, Grid, makeStyles } from "@material-ui/core";
 import { MoreVert } from "@material-ui/icons";
 import React from "react";
+import { useHistory } from "react-router";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -28,14 +29,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
   },
 }));
-const ItemCard = ({ name, price, status }) => {
+const ItemCard = ({ id, name, price, status }) => {
   const classes = useStyles();
-
+  const history = useHistory();
   return (
     <Grid item lg={12} sm={12} xs={12} lg={12}>
       <Card className={classes.root}>
         <Box display="flex" flexDirection="row-reverse" mt={2}>
-          <MoreVert />
+          <MoreVert onClick={() => history.push(`/items/${id}/update`)} />
         </Box>
         <Grid container alignItems="center" justify="center">
           <Box>

@@ -6,8 +6,9 @@ import Home from "../components/Home/";
 
 import Manjam from "../components/Manjam/";
 
-import ItemUpdate from "../components/wishlist/itemUpdate";
+import AddItems from "../components/AddItems";
 
+import ItemUpdate from "../components/wishlist/itemUpdate";
 
 const Routes = () => {
   return (
@@ -17,8 +18,8 @@ const Routes = () => {
       <Route exact component={Manjam} path="/manjam" />
       <Route exact component={Home} path="/favorites" />
       <Route exact component={Home} path="/nearby" />
-        <Route component={ItemUpdate} path="/items/:itemID/update/" />
-
+      <Route exact component={AddItems} path="/add-item" />
+      <Route component={ItemUpdate} path="/items/:itemID/update/" />
     </Switch>
   );
 };
